@@ -6,6 +6,11 @@ import requests
 class AISWEB(object):
 
     def __init__(self, API, API_PASS):
+        if not API or not API_PASS:
+            raise TypeError("Pass the required args: API KEY and API PASSWORD")
+        elif type(API) is not str or type(API_PASS) is not str:
+            raise TypeError("Pass the required args as strings.")
+
         self.API = API
         self.API_PASS = API_PASS
         self.API_BASE = 'https://www.aisweb.aer.mil.br/api/'
