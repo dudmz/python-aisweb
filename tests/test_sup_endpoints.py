@@ -16,4 +16,4 @@ class TestSupEndpoint(unittest.TestCase):
         ).status_code, 200)
 
     def test_sup_no_data_endpoint(self):
-        self.assertEqual(self.a.suplementos({}), 200)
+        self.assertEqual(self.a.suplementos({}).status_code, 200)

@@ -17,4 +17,4 @@ class TestAeroEndpoint(unittest.TestCase):
     # So there's nothing wrong with the code, it just returns a response.text
     # "em atualização (updating)".
     def test_aero_no_data_endpoint(self):
-        self.assertEqual(self.a.aero({}), None)
+        self.assertEqual(self.a.aero({}).status_code, None)

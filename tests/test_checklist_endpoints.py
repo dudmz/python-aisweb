@@ -11,4 +11,4 @@ class TestChecklistEndpoint(unittest.TestCase):
         self.a = AISWEB('<API_KEY>', '<API_PASS>')
 
     def test_checklist_endpoint(self):
-        self.assertEqual(self.a.checklist(), 200)
+        self.assertEqual(self.a.checklist().status_code, 200)

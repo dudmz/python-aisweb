@@ -16,6 +16,3 @@ class TestMetEndpoint(unittest.TestCase):
     def test_no_data_met_endpoint(self):
         self.assertEqual(self.a.met({}), None)
 
-
-if __name__ == '__main__':
-    unittest.main()

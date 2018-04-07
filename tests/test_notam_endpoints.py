@@ -16,4 +16,4 @@ class TestNotamEndpoint(unittest.TestCase):
         ).status_code, 200)
 
     def test_notam_no_data_endpoint(self):
-        self.assertEqual(self.a.notam({}), 200)
+        self.assertEqual(self.a.notam({}).status_code, 200)

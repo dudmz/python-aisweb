@@ -16,4 +16,4 @@ class TestCartasEndpoint(unittest.TestCase):
         ).status_code, 200)
 
     def test_cartas_no_data_endpoint(self):
-        self.assertEqual(self.a.cartas({}), 200)
+        self.assertEqual(self.a.cartas({}).status_code, 200)
