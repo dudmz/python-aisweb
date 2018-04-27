@@ -16,15 +16,12 @@ class AISWEB(object):
         self.API_BASE = 'https://www.aisweb.aer.mil.br/api/'
 
     def __getattr__(self, name):
-
         def wrapper(data={}, method='GET'):
             response = self.request(name, data, method)
             return response
-
         return wrapper
 
     def request(self, name, data, method):
-
         built_req = '{}?apiKey={}&apiPass={}&area={}'.format(
             self.API_BASE, self.API, self.API_PASS, name
         )
@@ -44,7 +41,6 @@ class AISWEB(object):
                     )
                 else:
                     return response
-
         except Exception:
             raise Exception("Error: method {} not supported at this time!".format(
                 method
