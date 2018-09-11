@@ -1,27 +1,29 @@
 # -*- coding: utf-8 -*-
+import json
 
 import requests
+import xmltodict
 
 
 class AISWEB(object):
 
-    def __init__(self, API, API_PASS):
-        if not API or not API_PASS:
+    def __init__(self, *args):
+        if not api or not api_pass:
             raise TypeError("Pass the required args: API KEY and API PASSWORD")
-        elif type(API) is not str or type(API_PASS) is not str:
+        elif type(api) is not str or type(api_pass) is not str:
             raise TypeError("Pass the required args as strings.")
 
-        self.API = API
-        self.API_PASS = API_PASS
-        self.API_BASE = 'https://www.aisweb.aer.mil.br/api/'
+        self.__API = api
+        self.__API_PASS = api_pass
+        self.__API_BASE = 'https://www.aisweb.aer.mil.br/api/'
 
     def __getattr__(self, name):
-        def wrapper(data={}, method='GET'):
-            response = self.request(name, data, method)
+        def wrapper(data={}, method='GET', response_type='XML'):
+            response = self.request(name, data, method, response_type)
             return response
         return wrapper
 
-    def request(self, name, data, method):
+    def request(self, name, data, method, response_type):
         built_req = '{}?apiKey={}&apiPass={}&area={}'.format(
             self.API_BASE, self.API, self.API_PASS, name
         )
@@ -39,11 +41,21 @@ class AISWEB(object):
                         "Endpoint does not exist or incorrect data entry,"
                         " check the docs!"
                     )
-                else:
-                    return response
+
+                if response_type == 'XML':
+                    return response.content
+                elif response_type == 'JSON':
+                    return self._convert_response_json(response.content)
+
         except Exception:
             raise Exception("Error: method {} not supported at this time!".format(
                 method
             ))
 
+<<<<<<< HEAD
         return
+=======
+    @staticmethod
+    def _convert_response_json(response_content):
+        return json.dumps(xmltodict.parse(response_content), indent=4)
+>>>>>>> master
