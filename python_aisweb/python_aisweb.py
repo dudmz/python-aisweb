@@ -52,10 +52,6 @@ class AISWEB(object):
                 method
             ))
 
-<<<<<<< HEAD
-        return
-=======
     @staticmethod
     def _convert_response_json(response_content):
         return json.dumps(xmltodict.parse(response_content), indent=4)
->>>>>>> master
