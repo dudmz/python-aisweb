@@ -7,9 +7,14 @@ import xmltodict
 
 class AISWEB(object):
 
-    def __init__(self, API, API_PASS):
-        self.__API = API
-        self.__API_PASS = API_PASS
+    def __init__(self, api, api_pass):
+        if not api or not api_pass:
+            raise TypeError("Pass the required args: API KEY and API PASSWORD")
+        elif type(api) is not str or type(api_pass) is not str:
+            raise TypeError("Pass the required args as strings.")
+
+        self.__API = api
+        self.__API_PASS = api_pass
         self.__API_BASE = 'https://www.aisweb.aer.mil.br/api/'
 
     def __getattr__(self, name):
@@ -20,7 +25,7 @@ class AISWEB(object):
 
     def request(self, name, data, method, response_type):
         built_req = '{}?apiKey={}&apiPass={}&area={}'.format(
-            self.API_BASE, self.API, self.API_PASS, name
+            self.__API_BASE, self.__API, self.__API_PASS, name
         )
 
         for key, value in data.items():
@@ -41,6 +46,8 @@ class AISWEB(object):
                     return response.content
                 elif response_type == 'JSON':
                     return self._convert_response_json(response.content)
+                else:
+                    raise Exception("Type % not supported." % response_type)
 
         except Exception:
             raise Exception("Error: method {} not supported at this time!".format(
