@@ -13,5 +13,10 @@ pip install python-aisweb
 from python_aisweb import AISWEB
 
 a = AISWEB('<API_KEY>', '<API_PASS>')
-response = a.<area_code>({'arg_key': 'arg_value'}, method='GET')
+
+# Response comes in XML by default. If you want JSON responses, do as below:
+response = a.<area_code>({'arg_key': 'arg_value'}, method='GET', response_type="JSON")
+
+# The response, when JSON specified, is indented by 4.
+print(response)
 ```

@@ -7,7 +7,7 @@ import xmltodict
 
 class AISWEB(object):
 
-    def __init__(self, *args):
+    def __init__(self, api, api_pass):
         if not api or not api_pass:
             raise TypeError("Pass the required args: API KEY and API PASSWORD")
         elif type(api) is not str or type(api_pass) is not str:
@@ -25,7 +25,7 @@ class AISWEB(object):
 
     def request(self, name, data, method, response_type):
         built_req = '{}?apiKey={}&apiPass={}&area={}'.format(
-            self.API_BASE, self.API, self.API_PASS, name
+            self.__API_BASE, self.__API, self.__API_PASS, name
         )
 
         for key, value in data.items():
@@ -46,6 +46,8 @@ class AISWEB(object):
                     return response.content
                 elif response_type == 'JSON':
                     return self._convert_response_json(response.content)
+                else:
+                    raise Exception("Type % not supported." % response_type)
 
         except Exception:
             raise Exception("Error: method {} not supported at this time!".format(
