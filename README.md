@@ -5,7 +5,7 @@ This is an API Wrapper for the Brazilian Aeronautical Information Service from D
 [![Build Status](https://travis-ci.org/carlosdamazio/python-aisweb.svg?branch=master)](https://travis-ci.org/carlosdamazio/python-aisweb)
 
 # Installation
-With pip installed, just install it:
+With pip installed, just install the package with it. Simple as that:
 ```bash
 pip install python-aisweb
 ```
