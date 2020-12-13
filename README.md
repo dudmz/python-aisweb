@@ -1,6 +1,6 @@
 # Python AISWEB
 
-This is an API Wrapper for the Brazilian Aeronautical Information Service from DECEA's AISWEB system. If you're a developer who wants to use this API and want to check the docs for usage, please contact DECEA (Departamento de Controle do Espaço Aéreo) to get your API Key in https://aisweb.aer.mil.br.
+This is an API Wrapper for the Brazilian Aeronautical Information Service from DECEA's AISWEB system. If you're a developer who wants to use this API and want to check the docs for usage, please contact DECEA (Departamento de Controle do Espaço Aéreo) to get your API Key in https://aisweb.decea.gov.br/.
 
 
 # Installation
