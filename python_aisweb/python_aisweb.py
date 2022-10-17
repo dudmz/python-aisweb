@@ -14,7 +14,7 @@ class AISWEB(object):
 
         self.__API = api
         self.__API_PASS = api_pass
-        self.__API_BASE = 'https://www.aisweb.aer.mil.br/api/'
+        self.__API_BASE = 'https://aisweb.decea.mil.br/api/'
 
     def __getattr__(self, name):
         """
